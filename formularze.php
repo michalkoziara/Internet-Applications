@@ -12,7 +12,8 @@ and open the template in the editor.
     <body>
         <?php
 
-        function drukuj_form() {
+        function drukuj_form()
+        {
             ?>
             <form action="formularze.php" method="POST" >
                 <table border= 0>
@@ -51,6 +52,7 @@ and open the template in the editor.
                     <input type="submit" value="Statystyki" name="submit" />
             </form>
             <?php
+
         }
 
         include_once("funkcje.php");
@@ -58,13 +60,17 @@ and open the template in the editor.
         if (filter_input(INPUT_POST, "submit")) {
             $akcja = filter_input(INPUT_POST, "submit");
             switch ($akcja) {
-                case "Dodaj":dodaj();
+                case "Dodaj":
+                    dodaj();
                     break;
-                case "Pokaż":pokaz();
+                case "Pokaż":
+                    pokaz();
                     break;
-                case "Wyczyść":wyczysc();
+                case "Wyczyść":
+                    wyczysc();
                     break;
-                case "Statystyki": statystyki();
+                case "Statystyki":
+                    statystyki();
                     break;
             }
         }

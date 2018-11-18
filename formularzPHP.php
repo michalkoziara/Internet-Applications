@@ -37,8 +37,10 @@ and open the template in the editor.
             </table> 
             <h4>Zamawiam tutorial z języka:</h4>
             <p><?php
-                $tech = ["C", "CPP", "Java", "C#", "Html", "CSS", "XML", "PHP",
-                    "JavaScript"];
+                $tech = [
+                    "C", "CPP", "Java", "C#", "Html", "CSS", "XML", "PHP",
+                    "JavaScript"
+                ];
                 foreach ($tech as $key => $value) {
                     echo '<input name="tech[]" type="checkbox" value="' . $value . '"/>' . $value . '';
                 }

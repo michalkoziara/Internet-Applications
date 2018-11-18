@@ -1,7 +1,8 @@
 <?php
 
-function statystyki() {
-     $file = "osoby.txt";
+function statystyki()
+{
+    $file = "osoby.txt";
     $linecount = 0;
     $handle = fopen($file, "r");
     while (!feof($handle)) {
@@ -12,27 +13,27 @@ function statystyki() {
     $linecount -= 1;
 
     echo "<p>Liczba zamówień: <br /> $linecount </p>";
-    
+
     $csv = array_map('str_getcsv', file($file));
-    array_walk($csv, function(&$a) use ($csv) {
-      $nazwy = array(
-          'nazwisko',
-          'wiek',
-          'kraj',
-          'email',
-          'tech',
-          'zaplata'
-      );
-      $a = array_combine($nazwy, $a);
+    array_walk($csv, function (&$a) use ($csv) {
+        $nazwy = array(
+            'nazwisko',
+            'wiek',
+            'kraj',
+            'email',
+            'tech',
+            'zaplata'
+        );
+        $a = array_combine($nazwy, $a);
     });
-    
-   $under18 = 0;
-   $above50 = 0;
-    foreach($csv as $value) {
-        if($value['wiek']<18){
+
+    $under18 = 0;
+    $above50 = 0;
+    foreach ($csv as $value) {
+        if ($value['wiek'] < 18) {
             $under18++;
-        }     
-        if($value['wiek']>50){
+        }
+        if ($value['wiek'] > 50) {
             $above50++;
         }
     }
@@ -42,11 +43,13 @@ function statystyki() {
     echo "<p>Liczba zamówień powyżej 18 roku życia: <br /> $above50 </p>";
 }
 
-function dodaj() {
+function dodaj()
+{
     walidacja();
 }
 
-function pokaz() {
+function pokaz()
+{
     $nazwa_pliku = "osoby.txt";
     if (is_file($nazwa_pliku) || is_readable($nazwa_pliku)) {
         $handle = fopen($nazwa_pliku, "r");
@@ -60,14 +63,16 @@ function pokaz() {
     }
 }
 
-function wyczysc() {
+function wyczysc()
+{
     $nazwa_pliku = "osoby.txt";
     $myfile = fopen($nazwa_pliku, "w") or die("Nie mozna otworzyc!");
     fwrite($myfile, '');
     fclose($myfile);
 }
 
-function dopliku($plik, $tablicaDanych) {
+function dopliku($plik, $tablicaDanych)
+{
     $dane = "";
 
     $dane .= $tablicaDanych['nazw'] . ", ";
@@ -94,29 +99,35 @@ function dopliku($plik, $tablicaDanych) {
     echo "<p>Zapisano: <br /> $dane</p>";
 }
 
-function walidacja() {
+function walidacja()
+{
     $args = array(
-        'nazw' => ['filter' => FILTER_VALIDATE_REGEXP,
+        'nazw' => [
+            'filter' => FILTER_VALIDATE_REGEXP,
             'options' => ['regexp' => '/^[A-Z]{1}[a-ząęłńśćźżó-]{1,25}$/']
         ],
-        'wiek' => ['filter' => FILTER_VALIDATE_INT,
-            'options' => ['min_range' => 1,
-                'max_range' => 100]
+        'wiek' => [
+            'filter' => FILTER_VALIDATE_INT,
+            'options' => [
+                'min_range' => 1,
+                'max_range' => 100
+            ]
         ],
-        'email' => ['filter' => FILTER_VALIDATE_EMAIL
-        ],
+        'email' => ['filter' => FILTER_VALIDATE_EMAIL],
         'kraj' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-        'tech' => ['filter' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+        'tech' => [
+            'filter' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
             'flags' => FILTER_REQUIRE_ARRAY
         ],
-        'zapłata' => ['filter' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+        'zapłata' => [
+            'filter' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
             'flags' => FILTER_REQUIRE_ARRAY
         ]
     );
     $dane = filter_input_array(INPUT_POST, $args);
     $errors = "";
     foreach ($dane as $key => $val) {
-        if ($val === false or $val === NULL) {
+        if ($val === false or $val === null) {
             $errors .= $key . " ";
         }
     }
