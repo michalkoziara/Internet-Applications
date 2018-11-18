@@ -12,22 +12,23 @@ and open the template in the editor.
     <body>
         <?php
 
-        function galeria($rows, $cols) {           
+        function galeria($rows, $cols)
+        {
             print("<style>body{background:lightblue}</style>");
             print("<h2 style='text-align: center; color: blue'>Galeria zdjec</h1>");
             print("<table>");
             for ($i = 0; $i < $rows; $i++) {
                 print("<tr>");
                 for ($j = 0; $j < $cols; $j++) {
-                    $nazwa = 'obraz' . (($i*$cols) + ($j+1));
+                    $nazwa = 'obraz' . (($i * $cols) + ($j + 1));
                     print("<td><img src='obrazki/$nazwa.jpg' alt='$nazwa' /></td>");
                 }
                 print("</tr>");
             }
             print("</table>");
-        } 
+        }
 
-         galeria(2,5);
+        galeria(2, 5);
 
         ?>
     </body>

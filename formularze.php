@@ -7,15 +7,17 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Lab4</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <?php
 
-        function drukuj_form() {
+        function drukuj_form()
+        {
             ?>
             <form action="formularze.php" method="POST" >
-                <table border= 0>
+                <table>
                     <tbody>
                         <tr> <td>Nazwisko: </td>
                             <td><input name="nazw" size="30"/> </td>
@@ -37,20 +39,34 @@ and open the template in the editor.
                     </tbody>
                 </table> 
                 <h4>Zamawiam tutorial z języka:</h4>
-                <p><input name="tech[]" type="checkbox" value="PHP"/>PHP
-                    <input name="tech[]" type="checkbox" value="C/C++"/>C/C++
-                    <input name="tech[]" type="checkbox" value="Java"/>Java </p>
+                <p>
+                    <?php
+                    $tech = [
+                        "PHP", "C/C++", "Java"
+                    ];
+                    foreach ($tech as $key => $value) {
+                        echo '<input name="tech[]" type="checkbox" value="' . $value . '"/>' . $value . '';
+                    }
+                    ?>
+                </p>
                 <h4>Sposób zapłaty:</h4>
-                <p><input name="zapłata[]" type="radio" value="eurocard" />eurocard
-                    <input name="zapłata[]" type="radio" value= "visa" />visa
-                    <input name="zapłata[]" type="radio" value= "przelew bankowy" />przelew
-                    bankowy<br/>
-                    <input type="submit" value="Wyczyść" name="submit" />
-                    <input type="submit" value="Dodaj" name="submit" />
-                    <input type="submit" value="Pokaż" name="submit" />
-                    <input type="submit" value="Statystyki" name="submit" />
+                <p>
+                    <?php
+                    $tech = [
+                        "eurocard", "visa", "przelew bankowy"
+                    ];
+                    foreach ($tech as $key => $value) {
+                        echo '<input name="zapłata[]" type="radio" value="' . $value . '"/>' . $value . '';
+                    }
+                    ?>
+                <p>
+                <input type="submit" value="Wyczyść" name="submit" />
+                <input type="submit" value="Dodaj" name="submit" />
+                <input type="submit" value="Pokaż" name="submit" />
+                <input type="submit" value="Statystyki" name="submit" />
             </form>
             <?php
+
         }
 
         include_once("funkcje.php");
@@ -58,13 +74,17 @@ and open the template in the editor.
         if (filter_input(INPUT_POST, "submit")) {
             $akcja = filter_input(INPUT_POST, "submit");
             switch ($akcja) {
-                case "Dodaj":dodaj();
+                case "Dodaj":
+                    dodaj();
                     break;
-                case "Pokaż":pokaz();
+                case "Pokaż":
+                    pokaz();
                     break;
-                case "Wyczyść":wyczysc();
+                case "Wyczyść":
+                    wyczysc();
                     break;
-                case "Statystyki": statystyki();
+                case "Statystyki":
+                    statystyki();
                     break;
             }
         }
