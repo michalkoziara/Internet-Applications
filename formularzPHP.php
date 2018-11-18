@@ -13,7 +13,7 @@ and open the template in the editor.
     <body>
         <style>body{background:lightblue}</style>
         <h3>Przykładowy formularz HTML</h3>
-        <form action="odbierz2.php" method="POST" >
+        <form method="get" action="odbierz.php" enctype="text/plain">
             <table border= 0>
                 <tbody>
                     <tr> <td>Nazwisko: </td>
@@ -36,9 +36,13 @@ and open the template in the editor.
                 </tbody>
             </table> 
             <h4>Zamawiam tutorial z języka:</h4>
-            <p><input name="tech[]" type="checkbox" value="PHP"/>PHP
-                <input name="tech[]" type="checkbox" value="C/C++"/>C/C++
-                <input name="tech[]" type="checkbox" value="Java"/>java </p>
+            <p><?php
+                $tech = ["C", "CPP", "Java", "C#", "Html", "CSS", "XML", "PHP",
+                    "JavaScript"];
+                foreach ($tech as $key => $value) {
+                    echo '<input name="tech[]" type="checkbox" value="' . $value . '"/>' . $value . '';
+                }
+                ?></p>
             <h4>Sposób zapłaty:</h4>
             <p><input name="zapłata[]" type="radio" value="euro" />eurocard
                 <input name="zapłata[]" type="radio" value= "visa" />visa
