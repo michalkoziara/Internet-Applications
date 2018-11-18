@@ -52,11 +52,11 @@ and open the template in the editor.
                 <h4>Sposób zapłaty:</h4>
                 <p>
                     <?php
-                    $tech = [
+                    $zaplata = [
                         "eurocard", "visa", "przelew bankowy"
                     ];
-                    foreach ($tech as $key => $value) {
-                        echo '<input name="zapłata[]" type="radio" value="' . $value . '"/>' . $value . '';
+                    foreach ($zaplata as $key => $value) {
+                        echo '<input name="zapłata" type="radio" value="' . $value . '"/>' . $value . '';
                     }
                     ?>
                 <p>
