@@ -19,7 +19,7 @@ and open the template in the editor.
         print_r($_GET);
         echo "<br/>var_dump<br/>";
         var_dump($_GET);
-        
+
         echo "<br/>_POST<br/>";
         foreach ($_POST as $key => $value) {
             echo "$key - $value<br/>";
