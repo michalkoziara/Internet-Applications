@@ -1,3 +1,0 @@
-Tom, 23, Polska, tom.c@com.pl, PHP , visa 
-Tom, 42, Polska, tom@com.pl, PHP C/C++ , przelew bankowy 
-Tomer, 12, Polska, tom@com.pl, PHP Java , przelew bankowy 

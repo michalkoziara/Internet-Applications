@@ -12,8 +12,6 @@ function statystyki()
     fclose($handle);
     $linecount -= 1;
 
-    echo "<p>Liczba zamówień: <br /> $linecount </p>";
-
     $csv = array_map('str_getcsv', file($file));
     array_walk($csv, function (&$a) use ($csv) {
         $nazwy = array(
@@ -37,7 +35,7 @@ function statystyki()
             $above50++;
         }
     }
-    $linecount -= 1;
+
     echo "<p>Liczba zamówień: <br /> $linecount </p>";
     echo "<p>Liczba zamówień poniżej 18 roku życia: <br /> $under18 </p>";
     echo "<p>Liczba zamówień powyżej 50 roku życia: <br /> $above50 </p>";

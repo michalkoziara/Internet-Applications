@@ -39,18 +39,31 @@ and open the template in the editor.
                     </tbody>
                 </table> 
                 <h4>Zamawiam tutorial z języka:</h4>
-                <p><input name="tech[]" type="checkbox" value="PHP"/>PHP
-                    <input name="tech[]" type="checkbox" value="C/C++"/>C/C++
-                    <input name="tech[]" type="checkbox" value="Java"/>Java </p>
+                <p>
+                    <?php
+                    $tech = [
+                        "PHP", "C/C++", "Java"
+                    ];
+                    foreach ($tech as $key => $value) {
+                        echo '<input name="tech[]" type="checkbox" value="' . $value . '"/>' . $value . '';
+                    }
+                    ?>
+                </p>
                 <h4>Sposób zapłaty:</h4>
-                <p><input name="zapłata[]" type="radio" value="eurocard" />eurocard
-                    <input name="zapłata[]" type="radio" value= "visa" />visa
-                    <input name="zapłata[]" type="radio" value= "przelew bankowy" />przelew
-                    bankowy<br/>
-                    <input type="submit" value="Wyczyść" name="submit" />
-                    <input type="submit" value="Dodaj" name="submit" />
-                    <input type="submit" value="Pokaż" name="submit" />
-                    <input type="submit" value="Statystyki" name="submit" />
+                <p>
+                    <?php
+                    $tech = [
+                        "eurocard", "visa", "przelew bankowy"
+                    ];
+                    foreach ($tech as $key => $value) {
+                        echo '<input name="zapłata[]" type="radio" value="' . $value . '"/>' . $value . '';
+                    }
+                    ?>
+                <p>
+                <input type="submit" value="Wyczyść" name="submit" />
+                <input type="submit" value="Dodaj" name="submit" />
+                <input type="submit" value="Pokaż" name="submit" />
+                <input type="submit" value="Statystyki" name="submit" />
             </form>
             <?php
 
