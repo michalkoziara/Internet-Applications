@@ -83,11 +83,7 @@ function dopliku($plik, $tablicaDanych)
         $dane .= $tech[$i] . ' ';
     }
     $dane .= ", ";
-
-    $zapłata = $tablicaDanych["zapłata"];
-    for ($i = 0; $i < sizeof($zapłata); $i++) {
-        $dane .= $zapłata[$i] . ' ';
-    }
+    $dane .= $tablicaDanych['zapłata'];
 
     $dane .= PHP_EOL;
     $myfile = fopen($plik, "a") or die("Nie mozna otworzyc!");
@@ -118,8 +114,7 @@ function walidacja()
             'flags' => FILTER_REQUIRE_ARRAY
         ],
         'zapłata' => [
-            'filter' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
-            'flags' => FILTER_REQUIRE_ARRAY
+            'filter' => FILTER_SANITIZE_FULL_SPECIAL_CHARS
         ]
     );
     $dane = filter_input_array(INPUT_POST, $args);
