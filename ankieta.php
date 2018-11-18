@@ -8,7 +8,7 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Ankieta</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="stylePool.css">
     </head>
     <body>
         <?php
@@ -34,8 +34,18 @@ and open the template in the editor.
             <?php
         }
 
-        drukuj_form();
-        
+        include_once("ankietaFunkcje.php");
+        $wynik = 0;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (filter_input(INPUT_POST, "submit")) {
+                $wynik = waliduj_glos();
+            }
+        } 
+
+        if(!$wynik)
+        {
+            drukuj_form();
+        } 
         ?>
 
     </body>

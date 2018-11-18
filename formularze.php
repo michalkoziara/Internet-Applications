@@ -17,7 +17,7 @@ and open the template in the editor.
         {
             ?>
             <form action="formularze.php" method="POST" >
-                <table border= 0>
+                <table>
                     <tbody>
                         <tr> <td>Nazwisko: </td>
                             <td><input name="nazw" size="30"/> </td>

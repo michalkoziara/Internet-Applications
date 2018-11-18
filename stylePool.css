@@ -1,0 +1,8 @@
+body {
+    background-color: lightblue;
+}
+
+table, th, td {
+    border-style: ridge;
+    text-align: center;
+ }
